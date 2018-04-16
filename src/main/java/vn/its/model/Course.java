@@ -1,19 +1,26 @@
 package vn.its.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 //@Entity(name="Cour")
 //@Table(name="CourX")
 @Entity
 public class Course {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
 
 	public Course() {
 		super();
+	}
+
+	public Course(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Course(int id, String name) {

@@ -8,7 +8,7 @@ import vn.its.model.Course;
 public class Management {
 
 	public static void main(String[] args) {
-		 Course course = new Course(5, "Jhipster");
+		 Course course = new Course("@Id Hibernate");
 
 		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
 
