@@ -2,7 +2,10 @@ package vn.its.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+//@Entity(name="Cour")
+//@Table(name="CourX")
 @Entity
 public class Course {
 	@Id
