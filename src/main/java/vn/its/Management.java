@@ -11,7 +11,7 @@ import vn.its.model.Course;
 public class Management {
 
 	public static void main(String[] args) {
-		Course course = new Course(2, "Hibernate");
+		Course course = new Course(4, "Jpa");
 
 		Configuration configuration = new Configuration();
 		configuration.configure();
