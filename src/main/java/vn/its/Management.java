@@ -26,6 +26,8 @@ public class Management {
 			session.beginTransaction();
 			Course course = (Course) session.get(Course.class, id);
 			System.out.println(course.getName());
+			session.getTransaction().commit();
+			session.close();
 			System.out.println(course.getSyllabuses());
 		} catch (Exception e) {
 			System.out.println(e.toString());
