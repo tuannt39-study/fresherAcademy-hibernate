@@ -33,4 +33,9 @@ public class Syllabus {
 		this.duration = duration;
 	}
 
+	@Override
+	public String toString() {
+		return content + " - " + duration;
+	}
+
 }

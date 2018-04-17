@@ -13,6 +13,26 @@ import vn.its.model.Syllabus;
 public class Management {
 
 	public static void main(String[] args) {
+		createCourseSyllabuses();
+		getCourseSyllabuses(1);
+		ConnectionUtil.getSessionFactory().close();
+
+	}
+
+	private static void getCourseSyllabuses(int id) {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Course course = (Course) session.get(Course.class, id);
+			System.out.println(course.getName());
+			System.out.println(course.getSyllabuses());
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	private static void createCourseSyllabuses() {
 		List<Syllabus> syllabuses = new ArrayList<Syllabus>();
 		syllabuses.add(new Syllabus("Hibernate content", 30));
 		syllabuses.add(new Syllabus("Hibernate offline content", 50));
@@ -30,8 +50,6 @@ public class Management {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		ConnectionUtil.getSessionFactory().close();
-
 	}
 
 }
