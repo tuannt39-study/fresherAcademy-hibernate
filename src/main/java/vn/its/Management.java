@@ -6,11 +6,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import vn.its.model.Course;
+import vn.its.model.Syllabus;
 
 public class Management {
 
 	public static void main(String[] args) {
-		 Course course = new Course("@Id Hibernate", new Date());
+		Syllabus syllabus = new Syllabus("Hibernate content", 30);
+		 Course course = new Course("@Id Hibernate", new Date(), syllabus);
 
 		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
 

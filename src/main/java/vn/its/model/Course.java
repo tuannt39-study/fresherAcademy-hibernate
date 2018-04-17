@@ -3,6 +3,7 @@ package vn.its.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,11 +18,13 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name = "Course_name", unique=true)
+	@Column(name = "Course_name", unique = true)
 	private String name;
 	@Temporal(TemporalType.DATE)
 	private Date createdDate;
-	
+	@Embedded
+	private Syllabus syllabus;
+
 	public Course() {
 		super();
 	}
@@ -43,6 +46,13 @@ public class Course {
 		this.createdDate = createdDate;
 	}
 
+	public Course(String name, Date createdDate, Syllabus syllabus) {
+		super();
+		this.name = name;
+		this.createdDate = createdDate;
+		this.syllabus = syllabus;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -57,6 +67,22 @@ public class Course {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Syllabus getSyllabus() {
+		return syllabus;
+	}
+
+	public void setSyllabus(Syllabus syllabus) {
+		this.syllabus = syllabus;
 	}
 
 	@Override
