@@ -1,10 +1,13 @@
 package vn.its.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 //@Entity(name="Cour")
 //@Table(name="CourX")
@@ -15,7 +18,9 @@ public class Course {
 	private int id;
 	@Column(name = "Course_name", unique=true)
 	private String name;
-
+	@Transient
+	private Date createdDate;
+	
 	public Course() {
 		super();
 	}
