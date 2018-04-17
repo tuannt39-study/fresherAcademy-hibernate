@@ -1,9 +1,11 @@
 package vn.its.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +24,8 @@ public class Course {
 	private String name;
 	@Temporal(TemporalType.DATE)
 	private Date createdDate;
-	@Embedded
-	private Syllabus syllabus;
+	@ElementCollection
+	private List<Syllabus> syllabuses = new ArrayList<Syllabus>();
 
 	public Course() {
 		super();
@@ -46,11 +48,11 @@ public class Course {
 		this.createdDate = createdDate;
 	}
 
-	public Course(String name, Date createdDate, Syllabus syllabus) {
+	public Course(String name, Date createdDate, List<Syllabus> syllabuses) {
 		super();
 		this.name = name;
 		this.createdDate = createdDate;
-		this.syllabus = syllabus;
+		this.syllabuses = syllabuses;
 	}
 
 	public int getId() {
@@ -77,12 +79,12 @@ public class Course {
 		this.createdDate = createdDate;
 	}
 
-	public Syllabus getSyllabus() {
-		return syllabus;
+	public List<Syllabus> getSyllabuses() {
+		return syllabuses;
 	}
 
-	public void setSyllabus(Syllabus syllabus) {
-		this.syllabus = syllabus;
+	public void setSyllabuses(List<Syllabus> syllabuses) {
+		this.syllabuses = syllabuses;
 	}
 
 	@Override
