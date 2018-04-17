@@ -1,5 +1,6 @@
 package vn.its.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +11,9 @@ import javax.persistence.Id;
 @Entity
 public class Course {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name = "Course_name", unique=true)
 	private String name;
 
 	public Course() {
