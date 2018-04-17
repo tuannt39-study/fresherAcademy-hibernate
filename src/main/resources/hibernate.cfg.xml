@@ -13,10 +13,12 @@
 
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-		
+
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="vn.its.model.Course" />
+		<mapping class="vn.its.model.Fresher" />
+		<mapping class="vn.its.model.Address" />
 	</session-factory>
 </hibernate-configuration>

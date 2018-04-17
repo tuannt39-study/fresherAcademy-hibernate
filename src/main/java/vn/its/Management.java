@@ -7,16 +7,38 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import vn.its.model.Address;
 import vn.its.model.Course;
+import vn.its.model.Fresher;
 import vn.its.model.Syllabus;
 
 public class Management {
 
 	public static void main(String[] args) {
-		createCourseSyllabuses();
-		getCourseSyllabuses(1);
+		// createCourseSyllabuses();
+		// getCourseSyllabuses(1);
+		createFresher();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void createFresher() {
+		Address address = new Address("duy tan", "cau giay");
+		Fresher fresher = new Fresher("tuan", address);
+
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.save(address);
+			session.save(fresher);
+			session.getTransaction().commit();
+			// Course hibernate = (Course) session.get(Course.class, 2);
+			// System.out.println(hibernate);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void getCourseSyllabuses(int id) {
