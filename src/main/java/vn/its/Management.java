@@ -1,5 +1,7 @@
 package vn.its;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -8,7 +10,7 @@ import vn.its.model.Course;
 public class Management {
 
 	public static void main(String[] args) {
-		 Course course = new Course("@Id Hibernate");
+		 Course course = new Course("@Id Hibernate", new Date());
 
 		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
 

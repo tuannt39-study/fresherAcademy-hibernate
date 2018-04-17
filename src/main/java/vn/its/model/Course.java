@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 //@Entity(name="Cour")
 //@Table(name="CourX")
@@ -18,7 +19,7 @@ public class Course {
 	private int id;
 	@Column(name = "Course_name", unique=true)
 	private String name;
-	@Transient
+	@Temporal(TemporalType.DATE)
 	private Date createdDate;
 	
 	public Course() {
@@ -34,6 +35,12 @@ public class Course {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+
+	public Course(String name, Date createdDate) {
+		super();
+		this.name = name;
+		this.createdDate = createdDate;
 	}
 
 	public int getId() {
