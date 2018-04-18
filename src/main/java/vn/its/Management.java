@@ -29,9 +29,23 @@ public class Management {
 		// createFresherAndCourse();
 		// createFresherAndGroup();
 		createGroup();
-		useCriteria();
+		useNameQuery();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void useNameQuery() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.getNamedQuery(Constants.GROUP_BY_NAME);
+			query.setParameter("name", "Java");
+			System.out.println(query.list());
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void useCriteria() {
