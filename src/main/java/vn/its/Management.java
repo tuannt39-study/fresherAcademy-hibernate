@@ -10,7 +10,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 
 import vn.its.model.Address;
 import vn.its.model.Course;
@@ -39,8 +41,12 @@ public class Management {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Group.class);
-			criteria.add(Restrictions.eq("id", 1));
-			criteria.add(Restrictions.like("name", "Java%"));
+			// criteria.add(Restrictions.or(Restrictions.eq("id", 1),
+			// Restrictions.like("name", "Java%")));
+			SimpleExpression eq = Restrictions.eq("id", 1);
+			SimpleExpression like = Restrictions.like("name", "Java%");
+			LogicalExpression le = Restrictions.or(eq, like);
+			criteria.add(le);
 			System.out.println(criteria.list());
 		} catch (Exception e) {
 			System.out.println(e.toString());
