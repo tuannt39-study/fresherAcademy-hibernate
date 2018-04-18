@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -24,9 +25,24 @@ public class Management {
 		// createFresherAndCourse();
 		// createFresherAndGroup();
 		createGroup();
-		getGroup();
+		queryGroupusingHQL();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void queryGroupusingHQL() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			String queryStr = "FROM Group";
+			Query query = session.createQuery(queryStr);
+			List<Group> groups = (List<Group>) query.list();
+			System.out.println(groups);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void getGroup() {
