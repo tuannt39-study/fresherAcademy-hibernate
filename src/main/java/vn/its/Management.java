@@ -22,9 +22,41 @@ public class Management {
 		// getCourseSyllabuses(1);
 		// createFresherAndAddress();
 		// createFresherAndCourse();
-		createFresherAndGroup();
+		// createFresherAndGroup();
+		createGroup();
+		getGroup();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void getGroup() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Group group = (Group) session.get(Group.class, 1);
+			System.out.println(group);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	private static void createGroup() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Group group1 = new Group("Java");
+			Group group2 = new Group("JavaScript");
+			session.save(group1);
+			session.save(group2);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void createFresherAndGroup() {
