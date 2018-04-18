@@ -25,9 +25,27 @@ public class Management {
 		// createFresherAndCourse();
 		// createFresherAndGroup();
 		createGroup();
-		queryGroupusingHQL();
+		updateGroupusingHQL();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void updateGroupusingHQL() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			String queryStr = "UPDATE Group set name = :name WHERE id = :id";
+			Query query = session.createQuery(queryStr);
+			query.setParameter("id", 1);
+			query.setParameter("name", "New Java");
+			int result = query.executeUpdate();
+			System.out.println(result);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void queryGroupusingHQL() {
