@@ -25,9 +25,26 @@ public class Management {
 		// createFresherAndCourse();
 		// createFresherAndGroup();
 		createGroup();
-		updateGroupusingHQL();
+		deleteGroupusingHQL();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void deleteGroupusingHQL() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			String queryStr = "DELETE FROM Group WHERE id = :id";
+			Query query = session.createQuery(queryStr);
+			query.setParameter("id", 1);
+			int result = query.executeUpdate();
+			System.out.println(result);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void updateGroupusingHQL() {
