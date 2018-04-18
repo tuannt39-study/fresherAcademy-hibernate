@@ -6,9 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import vn.its.model.Address;
 import vn.its.model.Course;
@@ -25,9 +27,24 @@ public class Management {
 		// createFresherAndCourse();
 		// createFresherAndGroup();
 		createGroup();
-		deleteGroupusingHQL();
+		useCriteria();
 		ConnectionUtil.getSessionFactory().close();
 
+	}
+
+	private static void useCriteria() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Group.class);
+			criteria.add(Restrictions.eq("id", 1));
+			criteria.add(Restrictions.like("name", "Java%"));
+			System.out.println(criteria.list());
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	private static void deleteGroupusingHQL() {
