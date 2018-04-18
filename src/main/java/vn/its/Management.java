@@ -37,6 +37,10 @@ public class Management {
 			session.beginTransaction();
 			Group group = (Group) session.get(Group.class, 1);
 			System.out.println(group);
+			group.setName("New Java Group");
+			session.update(group);
+			System.out.println(group);
+			session.delete(group);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println(e.toString());
