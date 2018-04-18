@@ -36,10 +36,10 @@ public class Management {
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			String queryStr = "FROM Group WHERE id = ? AND name LIKE ?";
+			String queryStr = "FROM Group WHERE id = :id AND name LIKE :name";
 			Query query = session.createQuery(queryStr);
-			query.setInteger(0, 1);
-			query.setString(1, "Java%");
+			query.setParameter("id", 1);
+			query.setParameter("name", "Java%");
 			List<Group> groups = (List<Group>) query.list();
 			System.out.println(groups);
 		} catch (Exception e) {
