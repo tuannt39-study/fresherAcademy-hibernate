@@ -36,7 +36,7 @@ public class Management {
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			String queryStr = "FROM Group WHERE id = :id AND name LIKE :name";
+			String queryStr = "SELECT name FROM Group WHERE id = :id AND name LIKE :name";
 			Query query = session.createQuery(queryStr);
 			query.setParameter("id", 1);
 			query.setParameter("name", "Java%");
