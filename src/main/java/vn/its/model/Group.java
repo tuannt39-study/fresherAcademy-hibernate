@@ -28,6 +28,7 @@ public class Group {
 
 	public Group() {
 		super();
+		System.out.println("Created a group");
 	}
 
 	public Group(String name) {

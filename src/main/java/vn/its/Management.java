@@ -34,6 +34,31 @@ public class Management {
 
 	}
 
+	private static void showFirstLevel() {
+		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Group group1 = (Group) session.get(Group.class, 1);
+			System.out.println(group1);
+			
+//			session.getTransaction().commit();
+//			session.close();
+//
+//			session = sessionFactory.openSession();
+//			session.beginTransaction();
+			group1 = null;
+			
+			group1 = (Group) session.get(Group.class, 1);
+			System.out.println(group1);
+			session.getTransaction().commit();
+			session.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+
 	private static void useNameQuery() {
 		SessionFactory sessionFactory = ConnectionUtil.getSessionFactory();
 
