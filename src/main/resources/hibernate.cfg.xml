@@ -20,5 +20,6 @@
 		<mapping class="vn.its.model.Course" />
 		<mapping class="vn.its.model.Fresher" />
 		<mapping class="vn.its.model.Address" />
+		<mapping class="vn.its.model.Group" />
 	</session-factory>
 </hibernate-configuration>
