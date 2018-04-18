@@ -16,6 +16,8 @@
 
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 
 		<mapping class="vn.its.model.Course" />
 		<mapping class="vn.its.model.Fresher" />

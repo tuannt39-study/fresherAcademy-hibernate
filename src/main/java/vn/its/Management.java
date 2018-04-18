@@ -43,14 +43,14 @@ public class Management {
 			Group group1 = (Group) session.get(Group.class, 1);
 			System.out.println(group1);
 			
-//			session.getTransaction().commit();
-//			session.close();
-//
-//			session = sessionFactory.openSession();
-//			session.beginTransaction();
+			session.getTransaction().commit();
+			session.close();
+
+			session = sessionFactory.openSession();
+			session.beginTransaction();
 			group1 = null;
 			
-			group1 = (Group) session.get(Group.class, 1);
+			group1 = (Group) session.get(Group.class, 2);
 			System.out.println(group1);
 			session.getTransaction().commit();
 			session.close();

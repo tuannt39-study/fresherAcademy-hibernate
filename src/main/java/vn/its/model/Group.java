@@ -12,11 +12,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import vn.its.Constants;
 
 @NamedQueries({ @NamedQuery(name = Constants.GROUP_BY_NAME, query = "from Group where name = :name") })
 @Entity
 @Table(name = "Groups")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Group {
 
 	@Id
